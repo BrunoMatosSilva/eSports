@@ -25,7 +25,7 @@ export function Game(){
   }
 
   useEffect(() => {
-    fetch(`http://192.168.0.120:3333/games/${game.id}/ads`)
+    fetch(`http://192.168.0.116:3333/games/${game.id}/ads`)
     .then(response => response.json())
     .then(data => setDuos(data))
   },[])
@@ -64,11 +64,17 @@ export function Game(){
         data={duos}
         keyExtractor={item => item.id}
         renderItem={({item}) => (
-          <DuoCard data={item} />
+          <DuoCard 
+          data={item}
+          onConnect={() => {}}
+          />
         )}
+        horizontal
+        style={styles.containerList}
+        contentContainerStyle={styles.contentList}
+        showsHorizontalScrollIndicator={false}
         />
       
-
       </SafeAreaView>
     </Background>
     
